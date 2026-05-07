@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DonahuellasSi.model
+namespace DonahuellasSi.vista
 {
-    public partial class Form2 : Form
+    public partial class Dash : Form
     {
-        public Form2()
+        public Dash()
         {
             InitializeComponent();
         }
