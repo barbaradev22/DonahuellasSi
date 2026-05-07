@@ -18,7 +18,7 @@ namespace DonahuellasSi.dao
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "INSERT INTO Donante (nombre_donante, telefono_donante, rut_donante) VALUES (@nombre, @telefono, @rut)";
+                string query = "INSERT INTO donante (nombre_donante, telefono_donante, rut_donante) VALUES (@nombre, @telefono, @rut)";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.Add("@nombre", SqlDbType.VarChar, 100).Value = t.NombreDonante;
@@ -75,7 +75,7 @@ namespace DonahuellasSi.dao
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "UPDATE Donante SET nombre_donante = @nombre, telefono_donante = @telefono, rut_donante = @rut WHERE id_donante = @id";
+                string query = "UPDATE donante SET nombre_donante = @nombre, telefono_donante = @telefono, rut_donante = @rut WHERE id_donante = @id";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.Add("@nombre", SqlDbType.VarChar, 100).Value = t.NombreDonante;
