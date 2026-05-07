@@ -15,15 +15,16 @@ namespace DonahuellasSi.dao
 
         public bool Insertar(Aporte t)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "INSERT INTO aporte (id_proyecto, id_donante, cantidad_donada) VALUES (@idProyecto, @idDonante, @cantidad)";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                string query = "INSERT INTO aporte (id_proyecto, id_donante, cantidad_donada, fecha_aporte) VALUES (@idProyecto, @idDonante, @cantidad, @fecha)";
+                using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.Add("@idProyecto", SqlDbType.Int).Value = t.IdProyecto;
                     command.Parameters.Add("@idDonante", SqlDbType.Int).Value = t.IdDonante;
                     command.Parameters.Add("@cantidad", SqlDbType.Int).Value = t.CantidadDonada;
+                    command.Parameters.Add("@fecha", SqlDbType.DateTime).Value = t.FechaAporte;
                     return command.ExecuteNonQuery() > 0;
                 }
             }
@@ -32,11 +33,11 @@ namespace DonahuellasSi.dao
         public List<Aporte> Listar()
         {
             var lista = new List<Aporte>();
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT id, id_proyecto, id_donante, cantidad_donada FROM aporte";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                string query = "SELECT id, id_proyecto, id_donante, cantidad_donada, fecha_aporte FROM aporte";
+                using (var command = new SqlCommand(query, connection))
                 {
                     using (var reader = command.ExecuteReader())
                     {
@@ -47,7 +48,8 @@ namespace DonahuellasSi.dao
                                 Id = Convert.ToInt32(reader["id"]),
                                 IdProyecto = Convert.ToInt32(reader["id_proyecto"]),
                                 IdDonante = Convert.ToInt32(reader["id_donante"]),
-                                CantidadDonada = Convert.ToInt32(reader["cantidad_donada"])
+                                CantidadDonada = Convert.ToInt32(reader["cantidad_donada"]),
+                                FechaAporte = Convert.ToDateTime(reader["fecha_aporte"])
                             });
                         }
                     }
@@ -58,11 +60,11 @@ namespace DonahuellasSi.dao
 
         public bool Eliminar(int id)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
                 string query = "DELETE FROM aporte WHERE id = @id";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.Add("@id", SqlDbType.Int).Value = id;
                     return command.ExecuteNonQuery() > 0;
@@ -72,15 +74,16 @@ namespace DonahuellasSi.dao
 
         public bool Actualizar(Aporte t)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "UPDATE aporte SET id_proyecto = @idProyecto, id_donante = @idDonante, cantidad_donada = @cantidad WHERE id = @id";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                string query = "UPDATE aporte SET id_proyecto = @idProyecto, id_donante = @idDonante, cantidad_donada = @cantidad, fecha_aporte = @fecha WHERE id = @id";
+                using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.Add("@idProyecto", SqlDbType.Int).Value = t.IdProyecto;
                     command.Parameters.Add("@idDonante", SqlDbType.Int).Value = t.IdDonante;
                     command.Parameters.Add("@cantidad", SqlDbType.Int).Value = t.CantidadDonada;
+                    command.Parameters.Add("@fecha", SqlDbType.DateTime).Value = t.FechaAporte;
                     command.Parameters.Add("@id", SqlDbType.Int).Value = t.Id;
                     return command.ExecuteNonQuery() > 0;
                 }
@@ -89,11 +92,11 @@ namespace DonahuellasSi.dao
 
         public Aporte BuscarPorId(int id)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT id, id_proyecto, id_donante, cantidad_donada FROM aporte WHERE id = @id";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                string query = "SELECT id, id_proyecto, id_donante, cantidad_donada, fecha_aporte FROM aporte WHERE id = @id";
+                using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.Add("@id", SqlDbType.Int).Value = id;
                     using (var reader = command.ExecuteReader())
@@ -105,7 +108,8 @@ namespace DonahuellasSi.dao
                                 Id = Convert.ToInt32(reader["id"]),
                                 IdProyecto = Convert.ToInt32(reader["id_proyecto"]),
                                 IdDonante = Convert.ToInt32(reader["id_donante"]),
-                                CantidadDonada = Convert.ToInt32(reader["cantidad_donada"])
+                                CantidadDonada = Convert.ToInt32(reader["cantidad_donada"]),
+                                FechaAporte = Convert.ToDateTime(reader["fecha_aporte"])
                             };
                         }
                     }

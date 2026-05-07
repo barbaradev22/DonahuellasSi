@@ -12,6 +12,7 @@ namespace DonahuellasSi.model
         private int idProyecto;
         private int idDonante;
         private int cantidadDonada;
+        private DateTime fechaAporte;
 
         public int Id
         {
@@ -37,14 +38,25 @@ namespace DonahuellasSi.model
             set { cantidadDonada = value; }
         }
 
-        public Aporte() { }
+        public DateTime FechaAporte
+        {
+            get { return fechaAporte; }
+            set { fechaAporte = value; }
+        }
 
-        public Aporte(int id, int idProyecto, int idDonante, int cantidadDonada)
+        public Aporte()
+        {
+            // Toma la fecha actual del equipo por defecto
+            this.fechaAporte = DateTime.Now;
+        }
+
+        public Aporte(int id, int idProyecto, int idDonante, int cantidadDonada, DateTime fechaAporte)
         {
             this.id = id;
             this.idProyecto = idProyecto;
             this.idDonante = idDonante;
             this.cantidadDonada = cantidadDonada;
+            this.fechaAporte = fechaAporte;
         }
     }
 }
