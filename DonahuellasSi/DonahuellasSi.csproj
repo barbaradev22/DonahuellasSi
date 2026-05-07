@@ -71,11 +71,23 @@
     <Compile Include="vista\Dash.Designer.cs">
       <DependentUpon>Dash.cs</DependentUpon>
     </Compile>
+    <Compile Include="vista\Forms\FormAportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vista\Forms\FormAportes.Designer.cs">
+      <DependentUpon>FormAportes.cs</DependentUpon>
+    </Compile>
     <Compile Include="vista\Forms\FormDonantes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="vista\Forms\FormDonantes.Designer.cs">
       <DependentUpon>FormDonantes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vista\Forms\FormProyectos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vista\Forms\FormProyectos.Designer.cs">
+      <DependentUpon>FormProyectos.cs</DependentUpon>
     </Compile>
     <Compile Include="vista\Login.cs">
       <SubType>Form</SubType>
@@ -92,6 +104,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="vista\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="donaHuellasDataSet.xsc">
       <DependentUpon>donaHuellasDataSet.xsd</DependentUpon>
     </None>

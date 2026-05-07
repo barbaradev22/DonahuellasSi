@@ -16,5 +16,17 @@ namespace DonahuellasSi.vista
         {
             InitializeComponent();
         }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string user = txtUser.Text;
+            string pass = txtPassw.Text;
+
+        }
     }
 }
