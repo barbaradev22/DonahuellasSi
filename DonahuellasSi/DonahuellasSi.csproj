@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="sqlScripts\tablaDonantes.sql" />
     <Content Include="sqlScripts\tablaUsuarios.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
