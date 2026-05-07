@@ -15,12 +15,13 @@ namespace DonahuellasSi.dao
 
         public bool Insertar(Proyecto t)
         {
-            using (var connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "INSERT INTO proyecto (descripcion_proyecto, monto_donado) VALUES (@descripcion, @monto)";
-                using (var command = new SqlCommand(query, connection))
+                string query = "INSERT INTO proyecto (nombre_proyecto, descripcion_proyecto, monto_donado) VALUES (@nombre, @descripcion, @monto)";
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
+                    command.Parameters.Add("@nombre", SqlDbType.VarChar, 100).Value = t.NombreProyecto;
                     command.Parameters.Add("@descripcion", SqlDbType.VarChar, 255).Value = t.DescripcionProyecto;
                     command.Parameters.Add("@monto", SqlDbType.Int).Value = t.CostoProyecto;
                     return command.ExecuteNonQuery() > 0;
@@ -34,8 +35,8 @@ namespace DonahuellasSi.dao
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT id_proyecto, descripcion_proyecto, monto_donado FROM proyecto";
-                using (SqlConnection command = new SqlCommand(query, connection))
+                string query = "SELECT id_proyecto, nombre_proyecto, descripcion_proyecto, monto_donado FROM proyecto";
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     using (var reader = command.ExecuteReader())
                     {
@@ -44,6 +45,7 @@ namespace DonahuellasSi.dao
                             lista.Add(new Proyecto
                             {
                                 IdProyecto = Convert.ToInt32(reader["id_proyecto"]),
+                                NombreProyecto = reader["nombre_proyecto"].ToString(),
                                 DescripcionProyecto = reader["descripcion_proyecto"].ToString(),
                                 CostoProyecto = Convert.ToInt32(reader["monto_donado"])
                             });
@@ -73,9 +75,10 @@ namespace DonahuellasSi.dao
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "UPDATE proyecto SET descripcion_proyecto = @descripcion, monto_donado = @monto WHERE id_proyecto = @id";
+                string query = "UPDATE proyecto SET nombre_proyecto = @nombre, descripcion_proyecto = @descripcion, monto_donado = @monto WHERE id_proyecto = @id";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
+                    command.Parameters.Add("@nombre", SqlDbType.VarChar, 100).Value = t.NombreProyecto;
                     command.Parameters.Add("@descripcion", SqlDbType.VarChar, 255).Value = t.DescripcionProyecto;
                     command.Parameters.Add("@monto", SqlDbType.Int).Value = t.CostoProyecto;
                     command.Parameters.Add("@id", SqlDbType.Int).Value = t.IdProyecto;
@@ -89,7 +92,7 @@ namespace DonahuellasSi.dao
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT id_proyecto, descripcion_proyecto, monto_donado FROM proyecto WHERE id_proyecto = @id";
+                string query = "SELECT id_proyecto, nombre_proyecto, descripcion_proyecto, monto_donado FROM proyecto WHERE id_proyecto = @id";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.Add("@id", SqlDbType.Int).Value = id;
@@ -100,6 +103,7 @@ namespace DonahuellasSi.dao
                             return new Proyecto
                             {
                                 IdProyecto = Convert.ToInt32(reader["id_proyecto"]),
+                                NombreProyecto = reader["nombre_proyecto"].ToString(),
                                 DescripcionProyecto = reader["descripcion_proyecto"].ToString(),
                                 CostoProyecto = Convert.ToInt32(reader["monto_donado"])
                             };
