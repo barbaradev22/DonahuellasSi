@@ -1,6 +1,7 @@
 ﻿using DonahuellasSi.model;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace DonahuellasSi.dao
     {
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["conexion"].ConnectionString;
 
-        public bool Insertar(Proyecto t)
+        public bool insertar(Proyecto t)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -29,7 +30,7 @@ namespace DonahuellasSi.dao
             }
         }
 
-        public List<Proyecto> Listar()
+        public List<Proyecto> listar()
         {
             var lista = new List<Proyecto>();
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -56,7 +57,7 @@ namespace DonahuellasSi.dao
             return lista;
         }
 
-        public bool Eliminar(int id)
+        public bool eliminar(int id)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -70,7 +71,7 @@ namespace DonahuellasSi.dao
             }
         }
 
-        public bool Actualizar(Proyecto t)
+        public bool actualizar(Proyecto t)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -87,7 +88,7 @@ namespace DonahuellasSi.dao
             }
         }
 
-        public Proyecto BuscarPorId(int id)
+        public Proyecto buscarPorId(int id)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
