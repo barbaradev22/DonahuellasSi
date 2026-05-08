@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DonahuellasSi.dao;
+using DonahuellasSi.model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,6 +41,14 @@ namespace DonahuellasSi.vista
 
         }
 
+        private void cargarAportes()
+        {
+            DAOAporteDetalle daoAD = new DAOAporteDetalle();
+            List<AporteDetalle> lista = daoAD.listarTodo();
+            BindingList<AporteDetalle> bindingList = new BindingList<AporteDetalle>(lista);
+            tablaPrincipal.DataSource = bindingList;
+        }
+
         private void rBtnDonantes_CheckedChanged(object sender, EventArgs e)
         {
             cargarDonantes();
@@ -47,6 +57,11 @@ namespace DonahuellasSi.vista
         private void rBtnProyectos_CheckedChanged(object sender, EventArgs e)
         {
             cargarProyectos();
+        }
+
+        private void rBtnAportes_CheckedChanged(object sender, EventArgs e)
+        {
+            cargarAportes();
         }
     }
 }

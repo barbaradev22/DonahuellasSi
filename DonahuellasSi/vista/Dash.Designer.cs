@@ -35,9 +35,8 @@
             this.rBtnAportes = new System.Windows.Forms.RadioButton();
             this.rBtnProyectos = new System.Windows.Forms.RadioButton();
             this.rBtnDonantes = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tablaPrincipal = new System.Windows.Forms.DataGridView();
             this.idproyectoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreproyectoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcionproyectoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,15 +50,21 @@
             this.donanteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.donanteTableAdapter = new DonahuellasSi.donaHuellasDataSet1TableAdapters.donanteTableAdapter();
             this.proyectoTableAdapter = new DonahuellasSi.donaHuellasDataSet2TableAdapters.proyectoTableAdapter();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaPrincipal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyectoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donaHuellasDataSet2)).BeginInit();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donaHuellasDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donanteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -77,6 +82,9 @@
             // 
             // panel5
             // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Controls.Add(this.label3);
+            this.panel5.Controls.Add(this.label2);
             this.panel5.Controls.Add(this.rBtnAportes);
             this.panel5.Controls.Add(this.rBtnProyectos);
             this.panel5.Controls.Add(this.rBtnDonantes);
@@ -88,82 +96,76 @@
             // 
             // rBtnAportes
             // 
-            this.rBtnAportes.Font = new System.Drawing.Font("Poppins Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rBtnAportes.BackColor = System.Drawing.Color.White;
+            this.rBtnAportes.Font = new System.Drawing.Font("Montserrat", 12F);
             this.rBtnAportes.Image = ((System.Drawing.Image)(resources.GetObject("rBtnAportes.Image")));
             this.rBtnAportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rBtnAportes.Location = new System.Drawing.Point(865, 149);
+            this.rBtnAportes.Location = new System.Drawing.Point(871, 149);
             this.rBtnAportes.Name = "rBtnAportes";
-            this.rBtnAportes.Size = new System.Drawing.Size(151, 35);
+            this.rBtnAportes.Size = new System.Drawing.Size(149, 35);
             this.rBtnAportes.TabIndex = 3;
             this.rBtnAportes.Text = "Ver Aportes";
             this.rBtnAportes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rBtnAportes.UseVisualStyleBackColor = true;
+            this.rBtnAportes.UseVisualStyleBackColor = false;
+            this.rBtnAportes.CheckedChanged += new System.EventHandler(this.rBtnAportes_CheckedChanged);
             // 
             // rBtnProyectos
             // 
+            this.rBtnProyectos.BackColor = System.Drawing.Color.White;
             this.rBtnProyectos.Checked = true;
-            this.rBtnProyectos.Font = new System.Drawing.Font("Poppins Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rBtnProyectos.Font = new System.Drawing.Font("Montserrat", 12F);
             this.rBtnProyectos.Image = ((System.Drawing.Image)(resources.GetObject("rBtnProyectos.Image")));
             this.rBtnProyectos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rBtnProyectos.Location = new System.Drawing.Point(440, 149);
+            this.rBtnProyectos.Location = new System.Drawing.Point(418, 149);
             this.rBtnProyectos.Name = "rBtnProyectos";
-            this.rBtnProyectos.Size = new System.Drawing.Size(151, 35);
+            this.rBtnProyectos.Size = new System.Drawing.Size(170, 35);
             this.rBtnProyectos.TabIndex = 2;
             this.rBtnProyectos.TabStop = true;
             this.rBtnProyectos.Text = "Ver Proyectos";
             this.rBtnProyectos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rBtnProyectos.UseVisualStyleBackColor = true;
+            this.rBtnProyectos.UseVisualStyleBackColor = false;
             this.rBtnProyectos.CheckedChanged += new System.EventHandler(this.rBtnProyectos_CheckedChanged);
             // 
             // rBtnDonantes
             // 
-            this.rBtnDonantes.Font = new System.Drawing.Font("Poppins Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rBtnDonantes.BackColor = System.Drawing.Color.White;
+            this.rBtnDonantes.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rBtnDonantes.Image = ((System.Drawing.Image)(resources.GetObject("rBtnDonantes.Image")));
             this.rBtnDonantes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rBtnDonantes.Location = new System.Drawing.Point(10, 149);
+            this.rBtnDonantes.Location = new System.Drawing.Point(18, 149);
             this.rBtnDonantes.Name = "rBtnDonantes";
-            this.rBtnDonantes.Size = new System.Drawing.Size(151, 35);
+            this.rBtnDonantes.Size = new System.Drawing.Size(170, 35);
             this.rBtnDonantes.TabIndex = 1;
             this.rBtnDonantes.Text = "Ver Donantes";
             this.rBtnDonantes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rBtnDonantes.UseVisualStyleBackColor = true;
+            this.rBtnDonantes.UseVisualStyleBackColor = false;
             this.rBtnDonantes.CheckedChanged += new System.EventHandler(this.rBtnDonantes_CheckedChanged);
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Montserrat SemiBold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1028, 58);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "¡Bienvenido a DonaHuellas!";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.dataGridView1);
+            this.panel4.Controls.Add(this.tablaPrincipal);
             this.panel4.Location = new System.Drawing.Point(218, 218);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1034, 451);
             this.panel4.TabIndex = 3;
             // 
-            // dataGridView1
+            // tablaPrincipal
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedHeaders;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tablaPrincipal.AutoGenerateColumns = false;
+            this.tablaPrincipal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.tablaPrincipal.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedHeaders;
+            this.tablaPrincipal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaPrincipal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idproyectoDataGridViewTextBoxColumn,
             this.nombreproyectoDataGridViewTextBoxColumn,
             this.descripcionproyectoDataGridViewTextBoxColumn,
             this.montodonadoDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.proyectoBindingSource;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1034, 451);
-            this.dataGridView1.TabIndex = 0;
+            this.tablaPrincipal.DataSource = this.proyectoBindingSource;
+            this.tablaPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tablaPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.tablaPrincipal.Name = "tablaPrincipal";
+            this.tablaPrincipal.Size = new System.Drawing.Size(1034, 451);
+            this.tablaPrincipal.TabIndex = 0;
             // 
             // idproyectoDataGridViewTextBoxColumn
             // 
@@ -209,6 +211,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Location = new System.Drawing.Point(12, 12);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 200);
@@ -243,6 +246,50 @@
             // 
             this.proyectoTableAdapter.ClearBeforeFill = true;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(194, 194);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Montserrat", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.PaleTurquoise;
+            this.label1.Location = new System.Drawing.Point(382, 70);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(120, 55);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Dona";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Montserrat", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(484, 70);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(162, 55);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Huellas!";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Montserrat", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(376, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(261, 55);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "¡Bienvenido a";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Dash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,13 +301,16 @@
             this.Load += new System.EventHandler(this.Dash_Load);
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaPrincipal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyectoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.donaHuellasDataSet2)).EndInit();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.donaHuellasDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.donanteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -273,7 +323,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView tablaPrincipal;
         private donaHuellasDataSet1 donaHuellasDataSet1;
         private System.Windows.Forms.BindingSource donanteBindingSource;
         private donaHuellasDataSet1TableAdapters.donanteTableAdapter donanteTableAdapter;
@@ -285,8 +335,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionproyectoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn montodonadoDataGridViewTextBoxColumn;
         private System.Windows.Forms.RadioButton rBtnDonantes;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton rBtnAportes;
         private System.Windows.Forms.RadioButton rBtnProyectos;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
     }
 }
