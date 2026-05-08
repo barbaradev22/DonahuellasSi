@@ -30,12 +30,12 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblValidacion = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassw = new System.Windows.Forms.TextBox();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblValidacion = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +60,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(269, 363);
             this.panel2.TabIndex = 0;
+            // 
+            // lblValidacion
+            // 
+            this.lblValidacion.AutoSize = true;
+            this.lblValidacion.Location = new System.Drawing.Point(12, 103);
+            this.lblValidacion.Name = "lblValidacion";
+            this.lblValidacion.Size = new System.Drawing.Size(44, 16);
+            this.lblValidacion.TabIndex = 5;
+            this.lblValidacion.Text = "label3";
             // 
             // btnLogin
             // 
@@ -103,15 +112,6 @@
             this.label1.Size = new System.Drawing.Size(54, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Usuario";
-            // 
-            // lblValidacion
-            // 
-            this.lblValidacion.AutoSize = true;
-            this.lblValidacion.Location = new System.Drawing.Point(12, 103);
-            this.lblValidacion.Name = "lblValidacion";
-            this.lblValidacion.Size = new System.Drawing.Size(44, 16);
-            this.lblValidacion.TabIndex = 5;
-            this.lblValidacion.Text = "label3";
             // 
             // Login
             // 

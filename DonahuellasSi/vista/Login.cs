@@ -16,6 +16,7 @@ namespace DonahuellasSi.vista
         public Login()
         {
             InitializeComponent();
+            customProperties();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace DonahuellasSi.vista
 
             if (user.Equals("") || pass.Equals(""))
             {
-                lblValidacion.Enabled = true;
+                lblValidacion.Visible= true;
                 lblValidacion.Text = "Complete todos los campos";
                 return;
             }
@@ -56,7 +57,7 @@ namespace DonahuellasSi.vista
             }
             else
             {
-                lblValidacion.Enabled = true;
+                lblValidacion.Visible= true;
                 lblValidacion.Text = "Usuario o contraseña incorrectos";
             }
 
@@ -64,7 +65,7 @@ namespace DonahuellasSi.vista
 
         private void customProperties()
         {
-            lblValidacion.Enabled = false;
+            lblValidacion.Visible = false;
         }
 
     }
