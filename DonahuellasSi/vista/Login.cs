@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DonahuellasSi.model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,7 +27,46 @@ namespace DonahuellasSi.vista
         {
             string user = txtUser.Text;
             string pass = txtPassw.Text;
+            List<Usuario> usuario = null;
+
+
+            if (user.Equals("") || pass.Equals(""))
+            {
+                lblValidacion.Enabled = true;
+                lblValidacion.Text = "Complete todos los campos";
+                return;
+            }
+
+            dao.DAOUsuario usuarioDAO = new dao.DAOUsuario();
+            try
+            {
+                usuario = usuarioDAO.Listar();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+
+            if (usuario.Any(u => u.Nombre == user && u.Password == pass))
+            {
+                this.Hide();
+                Dash dashboard = new Dash();
+
+            }
+            else
+            {
+                lblValidacion.Enabled = true;
+                lblValidacion.Text = "Usuario o contraseña incorrectos";
+            }
 
         }
+
+        private void customProperties()
+        {
+            lblValidacion.Enabled = false;
+        }
+
     }
+    
 }

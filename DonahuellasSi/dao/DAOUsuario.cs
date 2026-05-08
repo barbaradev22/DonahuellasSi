@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace DonahuellasSi.dao
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT id, nombre, password FROM usuario";
+                string query = "SELECT id_usuario, nombre_usuario, password_usuario FROM usuario";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     using (var reader = command.ExecuteReader())
@@ -47,9 +48,9 @@ namespace DonahuellasSi.dao
                             // Buena práctica: Inicialización de objetos más limpia.
                             lista.Add(new Usuario
                             {
-                                Id = Convert.ToInt32(reader["id"]),
-                                Nombre = reader["nombre"].ToString(),
-                                Password = reader["password"].ToString()
+                                Id = Convert.ToInt32(reader["id_usuario"]),
+                                Nombre = reader["nombre_usuario"].ToString(),
+                                Password = reader["password_usuario"].ToString()
                             });
                         }
                     }
