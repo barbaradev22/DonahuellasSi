@@ -14,7 +14,7 @@ namespace DonahuellasSi.dao
     {
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["conexion"].ConnectionString;
 
-        public bool Insertar(Donante t)
+        public bool insertar(Donante t)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -30,7 +30,7 @@ namespace DonahuellasSi.dao
             }
         }
 
-        public List<Donante> Listar()
+        public List<Donante> listar()
         {
             var lista = new List<Donante>();
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -57,7 +57,7 @@ namespace DonahuellasSi.dao
             return lista;
         }
 
-        public bool Eliminar(int id)
+        public bool eliminar(int id)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -71,7 +71,7 @@ namespace DonahuellasSi.dao
             }
         }
 
-        public bool Actualizar(Donante t)
+        public bool actualizar(Donante t)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -88,7 +88,7 @@ namespace DonahuellasSi.dao
             }
         }
 
-        public Donante BuscarPorId(int id)
+        public Donante buscarPorId(int id)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

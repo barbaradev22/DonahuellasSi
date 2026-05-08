@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DonahuellasSi.dao;
+using DonahuellasSi.model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,51 @@ namespace DonahuellasSi.vista
         public Dash()
         {
             InitializeComponent();
+        }
+
+        private void Dash_Load(object sender, EventArgs e)
+        {
+            this.proyectoTableAdapter.Fill(this.donaHuellasDataSet2.proyecto);
+        }
+
+        private void cargarProyectos()
+        {
+            // TODO: esta línea de código carga datos en la tabla 'donaHuellasDataSet2.proyecto' Puede moverla o quitarla según sea necesario.
+            // Pintar lista con proyectos.
+            this.proyectoTableAdapter.Fill(this.donaHuellasDataSet2.proyecto);
+
+        }
+
+        private void cargarDonantes()
+        {
+            // TODO: esta línea de código carga datos en la tabla 'donaHuellasDataSet1.donante' Puede moverla o quitarla según sea necesario.
+            // Pintar lista con donantes.
+            this.donanteTableAdapter.Fill(this.donaHuellasDataSet1.donante);
+
+
+        }
+
+        private void cargarAportes()
+        {
+            DAOAporteDetalle daoAD = new DAOAporteDetalle();
+            List<AporteDetalle> lista = daoAD.listarTodo();
+            BindingList<AporteDetalle> bindingList = new BindingList<AporteDetalle>(lista);
+            tablaPrincipal.DataSource = bindingList;
+        }
+
+        private void rBtnDonantes_CheckedChanged(object sender, EventArgs e)
+        {
+            cargarDonantes();
+        }
+
+        private void rBtnProyectos_CheckedChanged(object sender, EventArgs e)
+        {
+            cargarProyectos();
+        }
+
+        private void rBtnAportes_CheckedChanged(object sender, EventArgs e)
+        {
+            cargarAportes();
         }
     }
 }
