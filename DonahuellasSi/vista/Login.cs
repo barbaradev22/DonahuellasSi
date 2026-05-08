@@ -40,7 +40,7 @@ namespace DonahuellasSi.vista
             dao.DAOUsuario usuarioDAO = new dao.DAOUsuario();
             try
             {
-                usuario = usuarioDAO.Listar();
+                usuario = usuarioDAO.listar();
 
             }
             catch (Exception ex)
