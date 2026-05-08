@@ -30,8 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.donaHuellasDataSet3 = new DonahuellasSi.donaHuellasDataSet3();
+            this.proyectoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.proyectoTableAdapter = new DonahuellasSi.donaHuellasDataSet3TableAdapters.proyectoTableAdapter();
             this.idproyectoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreproyectoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcionproyectoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +80,35 @@
             this.panel1.Size = new System.Drawing.Size(1255, 634);
             this.panel1.TabIndex = 0;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1249, 67);
+            this.panel2.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Montserrat Medium", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1243, 52);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Gestión de Proyectos";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnVolver);
+            this.panel3.Controls.Add(this.btnEliminar);
+            this.panel3.Controls.Add(this.btnActualizar);
+            this.panel3.Controls.Add(this.btnAgregar);
+            this.panel3.Location = new System.Drawing.Point(3, 74);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1249, 164);
+            this.panel3.TabIndex = 1;
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.dataGridView1);
@@ -99,6 +134,20 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1249, 389);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // donaHuellasDataSet3
+            // 
+            this.donaHuellasDataSet3.DataSetName = "donaHuellasDataSet3";
+            this.donaHuellasDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // proyectoBindingSource
+            // 
+            this.proyectoBindingSource.DataMember = "proyecto";
+            this.proyectoBindingSource.DataSource = this.donaHuellasDataSet3;
+            // 
+            // proyectoTableAdapter
+            // 
+            this.proyectoTableAdapter.ClearBeforeFill = true;
             // 
             // idproyectoDataGridViewTextBoxColumn
             // 
