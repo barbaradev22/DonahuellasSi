@@ -49,7 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -89,6 +89,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>donaHuellasDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="donaHuellasDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>donaHuellasDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="donaHuellasDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>donaHuellasDataSet5.xsd</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -145,6 +155,12 @@
     <EmbeddedResource Include="vista\Dash.resx">
       <DependentUpon>Dash.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="vista\Forms\FormAportes.resx">
+      <DependentUpon>FormAportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vista\Forms\FormDonantes.resx">
+      <DependentUpon>FormDonantes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vista\Forms\FormProyectos.resx">
       <DependentUpon>FormProyectos.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,6 +210,28 @@
     </None>
     <None Include="donaHuellasDataSet3.xss">
       <DependentUpon>donaHuellasDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="donaHuellasDataSet4.xsc">
+      <DependentUpon>donaHuellasDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="donaHuellasDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>donaHuellasDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="donaHuellasDataSet4.xss">
+      <DependentUpon>donaHuellasDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="donaHuellasDataSet5.xsc">
+      <DependentUpon>donaHuellasDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="donaHuellasDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>donaHuellasDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="donaHuellasDataSet5.xss">
+      <DependentUpon>donaHuellasDataSet5.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
