@@ -8,10 +8,10 @@ namespace DonahuellasSi.dao
 {
     internal interface Crud<T>
     {
-        bool Insertar(T t);
-        List<T> Listar();
-        bool Eliminar(int id);
-        bool Actualizar(T t);
-        T BuscarPorId(int id);
+        bool insertar(T t);
+        List<T> listar();
+        bool eliminar(int id);
+        bool actualizar(T t);
+        T buscarPorId(int id);
     }
 }
