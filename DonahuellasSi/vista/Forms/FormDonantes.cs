@@ -40,10 +40,21 @@ namespace DonahuellasSi.vista.Forms
                 MessageBox.Show("Debe completar todos los campos");
                 return;
             }
-            
-            string nombre = txtNombre.Text;
-            string rut = txtRut.Text;
-            string tel = txtTelefono.Text;
+
+            string nombre = "";
+            string rut ="";
+            string tel = "";
+
+            try
+            {
+                nombre = txtNombre.Text;
+                rut = txtRut.Text;
+                tel = txtTelefono.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: Compruebe los campos e inténtelo de nuevo.\n" + ex.Message);
+            }
 
             Donante d = new Donante();
             d.NombreDonante = nombre;
@@ -60,6 +71,7 @@ namespace DonahuellasSi.vista.Forms
                     return;
                 }
             }
+            
             try
             {
                 confirmacion = daoDonante.insertar(d);
@@ -88,14 +100,34 @@ namespace DonahuellasSi.vista.Forms
                 MessageBox.Show("Seleccione una fila válida");
                 return;
             }
-            
             DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+            int id;
+            string nombre ="";
 
-            string nombre = row.Cells[0].Value.ToString();
+            string rut ="";
 
-            string rut = row.Cells[1].Value.ToString();
+            string telefono ="";
 
-            string telefono = row.Cells[2].Value.ToString();
+            try
+            {
+                id = Convert.ToInt32(row.Cells[0].Value);
+            } catch(Exception ex)
+            {
+                MessageBox.Show("Error al obtener el ID del donante: " + ex.Message);
+                return;
+            }
+
+            try
+            {
+                nombre = row.Cells[1].Value.ToString();
+                rut = row.Cells[2].Value.ToString();
+                telefono = row.Cells[3].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudieron obtener los datos seleccionados");
+                return;
+            }
 
             if(string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(rut) || string.IsNullOrEmpty(telefono))
             {
