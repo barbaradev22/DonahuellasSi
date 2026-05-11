@@ -33,9 +33,11 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.tablaPrincipal = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
+
             this.spnMonto = new System.Windows.Forms.NumericUpDown();
             this.cbProyectos = new System.Windows.Forms.ComboBox();
             this.cbDonantes = new System.Windows.Forms.ComboBox();
+
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,12 +48,16 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+
             this.timerCheck = new System.Windows.Forms.Timer(this.components);
+
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaPrincipal)).BeginInit();
             this.panel3.SuspendLayout();
+
             ((System.ComponentModel.ISupportInitialize)(this.spnMonto)).BeginInit();
+
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,6 +114,7 @@
             this.panel3.Size = new System.Drawing.Size(1665, 202);
             this.panel3.TabIndex = 1;
             // 
+
             // spnMonto
             // 
             this.spnMonto.Location = new System.Drawing.Point(626, 67);
@@ -130,6 +137,7 @@
             this.cbDonantes.Name = "cbDonantes";
             this.cbDonantes.Size = new System.Drawing.Size(354, 21);
             this.cbDonantes.TabIndex = 12;
+
             // 
             // label4
             // 
@@ -240,11 +248,13 @@
             this.label1.Text = "Gestión de Aportes";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+
             // timerCheck
             // 
             this.timerCheck.Interval = 1000;
             this.timerCheck.Tick += new System.EventHandler(this.timerCheck_Tick);
             // 
+
             // FormAportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -259,7 +269,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.tablaPrincipal)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+
             ((System.ComponentModel.ISupportInitialize)(this.spnMonto)).EndInit();
+
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 

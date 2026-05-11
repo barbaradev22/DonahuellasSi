@@ -53,6 +53,7 @@ namespace DonahuellasSi.vista.Forms
             cbProyectos.DataSource = lista;
         }
 
+
         private void timerCheck_Tick(object sender, EventArgs e)
         {
             if (cbDonantes.SelectedIndex == -1 && cbProyectos.SelectedIndex == -1)
@@ -95,6 +96,7 @@ namespace DonahuellasSi.vista.Forms
 
             List<Proyecto> listP = daoP.listar();
             List<Donante> listD = daoD.listar();
+
 
 
         }

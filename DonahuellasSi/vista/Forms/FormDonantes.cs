@@ -96,6 +96,7 @@ namespace DonahuellasSi.vista.Forms
                 return;
             }
             this.donanteTableAdapter.Fill(this.donaHuellasDataSet5.donante);
+
         }
 
         private void tablaDonantes_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -105,11 +106,13 @@ namespace DonahuellasSi.vista.Forms
                 MessageBox.Show("Seleccione una fila válida");
                 return;
             }
-            DataGridViewRow row = tablaDonantes.Rows[e.RowIndex];
+
+            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
             int id;
             string nombre ="";
 
             string rut ="";
+
 
             string telefono ="";
 
