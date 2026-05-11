@@ -37,6 +37,9 @@ namespace DonahuellasSi.vista.Forms
             lblId.Text = "Id del aporte: " + daoAD.listarTodo().Count.ToString();
         }
 
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace DonahuellasSi.vista.Forms
         {
             InitializeComponent();
             customProperties();
+            
         }
 
         private void FormDonantes_Load(object sender, EventArgs e)
@@ -72,13 +74,19 @@ namespace DonahuellasSi.vista.Forms
             if (confirmacion)
             {
                 MessageBox.Show($"Donante {d.NombreDonante} agregado correctamente");
+               
             }
             else
             {
                 MessageBox.Show("No se pudo agregar el donante");
                 return;
             }
-           
+            this.donanteTableAdapter.Fill(this.donaHuellasDataSet5.donante);
+            
+
+
+
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -89,7 +97,7 @@ namespace DonahuellasSi.vista.Forms
                 return;
             }
             
-            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+            DataGridViewRow row = tablaDonantes.Rows[e.RowIndex];
 
             string nombre = row.Cells[0].Value.ToString();
 
@@ -106,5 +114,7 @@ namespace DonahuellasSi.vista.Forms
             txtRut.Text = rut;
             txtTelefono.Text = telefono;
         }
+
+      
     }
 }

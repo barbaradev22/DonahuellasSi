@@ -16,6 +16,7 @@ namespace DonahuellasSi.vista
         public Login()
         {
             InitializeComponent();
+            customProperties();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -30,10 +31,10 @@ namespace DonahuellasSi.vista
             List<Usuario> usuario = null;
 
 
-            if (user.Equals("") || pass.Equals(""))
+            if (string.IsNullOrWhiteSpace(user)|| string.IsNullOrWhiteSpace(pass))
             {
-                lblValidacion.Enabled = true;
-                lblValidacion.Text = "Complete todos los campos";
+                lblValidacion.Visible = true;
+                lblValidacion.Text = "Complete todos los campos.";
                 return;
             }
 
@@ -52,21 +53,41 @@ namespace DonahuellasSi.vista
             {
                 this.Hide();
                 Dash dashboard = new Dash();
+                dashboard.Show();
 
             }
             else
             {
-                lblValidacion.Enabled = true;
-                lblValidacion.Text = "Usuario o contraseña incorrectos";
+                lblValidacion.Visible = true;
+                lblValidacion.Text = "Usuario o contraseña incorrectos.";
             }
 
         }
 
         private void customProperties()
         {
-            lblValidacion.Enabled = false;
+            lblValidacion.Visible = false;
         }
 
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void paneliss_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
     
 }
