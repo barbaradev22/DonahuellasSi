@@ -164,8 +164,46 @@ namespace DonahuellasSi.vista.Forms
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            if (!filaSeleccionada)
+            {
+                MessageBox.Show("Seleccione un proyecto de la tabla primero.");
+                return;
+            }
+            int idProyecto = Convert.ToInt32(tablaProyectos.CurrentRow.Cells[0].Value);
 
+
+            DialogResult confirmacion = MessageBox.Show(
+            $"¿Está seguro que desea eliminar al donante?",
+            "Confirmar eliminación",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Warning
+            );
+            if( confirmacion == DialogResult.Yes )
+
+                try
+                {
+                    bool resultado = DAOProyecto.eliminar(idProyecto);
+                    if (resultado)
+                    {
+                        MessageBox.Show("Proyecto eliminado correctamente");
+                       
+                        txtNombreProyecto.Clear();
+                        txtDescripcion.Clear();
+                        this.proyectoTableAdapter.Fill(this.donaHuellasDataSet3.proyecto);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo eliminar el proyecto");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar: " + ex.Message);
+                }
         }
+
+        
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
