@@ -259,13 +259,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="donaHuellas.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="donaHuellas_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>donaHuellas.mdf</DependentUpon>
-    </Content>
     <Content Include="sqlScripts\tablaAportes.sql" />
     <Content Include="sqlScripts\tablaDonantes.sql" />
     <Content Include="sqlScripts\tablaProyectos.sql" />
