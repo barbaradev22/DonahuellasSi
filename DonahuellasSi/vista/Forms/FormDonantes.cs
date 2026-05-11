@@ -15,6 +15,8 @@ namespace DonahuellasSi.vista.Forms
     public partial class FormDonantes : Form
     {
         private DAODonante daoDonante = new DAODonante();
+        // Variable para metodos actualizar - eliminar
+        private int idDonante = -1;
         public FormDonantes()
         {
             InitializeComponent();
@@ -90,7 +92,7 @@ namespace DonahuellasSi.vista.Forms
                 MessageBox.Show("No se pudo agregar el donante");
                 return;
             }
-           
+            this.donanteTableAdapter.Fill(this.donaHuellasDataSet5.donante);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -111,6 +113,7 @@ namespace DonahuellasSi.vista.Forms
             try
             {
                 id = Convert.ToInt32(row.Cells[0].Value);
+                idDonante = id;
             } catch(Exception ex)
             {
                 MessageBox.Show("Error al obtener el ID del donante: " + ex.Message);
@@ -134,9 +137,123 @@ namespace DonahuellasSi.vista.Forms
                 MessageBox.Show("La fila seleccionada contiene datos vacíos");
                 return;
             }
+            lblId.Text += $" {idDonante}";
             txtNombre.Text = nombre;
             txtRut.Text = rut;
             txtTelefono.Text = telefono;
+
+        }
+
+        // Metodos para actualizar el label del id del donante al limpiar los campos
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtNombre.Text) && string.IsNullOrEmpty(txtRut.Text) && string.IsNullOrEmpty(txtTelefono.Text))
+            {
+                lblId.Text = "Id del donante: " + daoDonante.listar().Count.ToString();
+            }
+        }
+
+        private void txtTelefono_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNombre.Text) && string.IsNullOrEmpty(txtRut.Text) && string.IsNullOrEmpty(txtTelefono.Text))
+            {
+                lblId.Text = "Id del donante: " + daoDonante.listar().Count.ToString();
+            }
+        }
+
+        private void txtRut_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNombre.Text) && string.IsNullOrEmpty(txtRut.Text) && string.IsNullOrEmpty(txtTelefono.Text))
+            {
+                lblId.Text = "Id del donante: " + daoDonante.listar().Count.ToString();
+            }
+        }
+        // </Metodos para actualizar el label del id del donante al limpiar los campos
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            if(idDonante == -1)
+            {
+                MessageBox.Show("Seleccione un donante de la tabla primero");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtRut.Text) || string.IsNullOrEmpty(txtTelefono.Text))
+            {
+                MessageBox.Show("Debe completar todos los campos");
+                return;
+            }
+
+            Donante d = new Donante();
+            d.IdDonante = idDonante;
+            d.NombreDonante = txtNombre.Text;
+            d.RutDonante = txtRut.Text;
+            d.TelefonoDonante = txtTelefono.Text;
+
+            try
+            {
+                bool confirmacion = daoDonante.actualizar(d);
+                if (confirmacion)
+                {
+                    MessageBox.Show($"Donante actualizado correctamente");
+                    idDonante = -1;
+                    donanteTableAdapter.Fill(donaHuellasDataSet5.donante);
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo actualizar el donante");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar: " + ex.Message);
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (idDonante == -1)
+            {
+                MessageBox.Show("Seleccione un donante de la tabla primero");
+                return;
+            }
+
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Está seguro que desea eliminar al donante?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirmacion == DialogResult.Yes)
+            {
+                try
+                {
+                    bool resultado = daoDonante.eliminar(idDonante);
+                    if (resultado)
+                    {
+                        MessageBox.Show("Donante eliminado correctamente");
+                        idDonante = -1;
+                        txtNombre.Clear();
+                        txtRut.Clear();
+                        txtTelefono.Clear();
+                        donanteTableAdapter.Fill(donaHuellasDataSet5.donante);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo eliminar el donante");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar: " + ex.Message);
+                }
+            }
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
