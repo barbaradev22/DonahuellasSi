@@ -98,14 +98,14 @@ namespace DonahuellasSi.vista.Forms
             this.donanteTableAdapter.Fill(this.donaHuellasDataSet5.donante);
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void tablaDonantes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if(e.RowIndex < 0)
             {
                 MessageBox.Show("Seleccione una fila válida");
                 return;
             }
-            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+            DataGridViewRow row = tablaDonantes.Rows[e.RowIndex];
             int id;
             string nombre ="";
 
