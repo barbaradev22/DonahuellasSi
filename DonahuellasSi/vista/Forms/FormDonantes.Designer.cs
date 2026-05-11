@@ -170,6 +170,7 @@
             this.txtRut.Name = "txtRut";
             this.txtRut.Size = new System.Drawing.Size(471, 26);
             this.txtRut.TabIndex = 11;
+            this.txtRut.TextChanged += new System.EventHandler(this.txtRut_TextChanged);
             // 
             // txtTelefono
             // 
@@ -179,6 +180,7 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(471, 26);
             this.txtTelefono.TabIndex = 10;
+            this.txtTelefono.TextChanged += new System.EventHandler(this.txtTelefono_TextChanged);
             // 
             // txtNombre
             // 
@@ -188,6 +190,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(471, 26);
             this.txtNombre.TabIndex = 8;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // label4
             // 
@@ -243,6 +246,7 @@
             this.btnVolver.TabIndex = 3;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = false;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // btnEliminar
             // 
@@ -254,6 +258,7 @@
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnActualizar
             // 
@@ -265,6 +270,7 @@
             this.btnActualizar.TabIndex = 1;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnAgregar
             // 

@@ -46,5 +46,10 @@ namespace DonahuellasSi.model
             this.telefonoDonante = telefonoDonante;
             this.rutDonante = rutDonante;
         }
+
+        public string toString()
+        {
+            return $"{idDonante}: {nombreDonante} - {rutDonante}";
+        }
     }
 }
