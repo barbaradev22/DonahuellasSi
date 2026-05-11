@@ -28,10 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tablaPrincipal = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.spnMonto = new System.Windows.Forms.NumericUpDown();
+            this.cbProyectos = new System.Windows.Forms.ComboBox();
+            this.cbDonantes = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,15 +46,13 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.timerCheck = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaPrincipal)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spnMonto)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -85,9 +87,9 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.numericUpDown1);
-            this.panel3.Controls.Add(this.comboBox2);
-            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.spnMonto);
+            this.panel3.Controls.Add(this.cbProyectos);
+            this.panel3.Controls.Add(this.cbDonantes);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
@@ -100,6 +102,29 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1249, 164);
             this.panel3.TabIndex = 1;
+            // 
+            // spnMonto
+            // 
+            this.spnMonto.Location = new System.Drawing.Point(626, 67);
+            this.spnMonto.Name = "spnMonto";
+            this.spnMonto.Size = new System.Drawing.Size(354, 20);
+            this.spnMonto.TabIndex = 14;
+            // 
+            // cbProyectos
+            // 
+            this.cbProyectos.FormattingEnabled = true;
+            this.cbProyectos.Location = new System.Drawing.Point(43, 123);
+            this.cbProyectos.Name = "cbProyectos";
+            this.cbProyectos.Size = new System.Drawing.Size(354, 21);
+            this.cbProyectos.TabIndex = 13;
+            // 
+            // cbDonantes
+            // 
+            this.cbDonantes.FormattingEnabled = true;
+            this.cbDonantes.Location = new System.Drawing.Point(43, 67);
+            this.cbDonantes.Name = "cbDonantes";
+            this.cbDonantes.Size = new System.Drawing.Size(354, 21);
+            this.cbDonantes.TabIndex = 12;
             // 
             // label4
             // 
@@ -180,6 +205,7 @@
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // panel2
             // 
@@ -199,28 +225,10 @@
             this.label1.Text = "Gestión de Aportes";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox1
+            // timerCheck
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(43, 67);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(354, 21);
-            this.comboBox1.TabIndex = 12;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(43, 123);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(354, 21);
-            this.comboBox2.TabIndex = 13;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(626, 67);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(354, 20);
-            this.numericUpDown1.TabIndex = 14;
+            this.timerCheck.Interval = 1000;
+            this.timerCheck.Tick += new System.EventHandler(this.timerCheck_Tick);
             // 
             // FormAportes
             // 
@@ -235,8 +243,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tablaPrincipal)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spnMonto)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -257,8 +265,9 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.NumericUpDown spnMonto;
+        private System.Windows.Forms.ComboBox cbProyectos;
+        private System.Windows.Forms.ComboBox cbDonantes;
+        private System.Windows.Forms.Timer timerCheck;
     }
 }
