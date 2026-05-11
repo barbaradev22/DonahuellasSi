@@ -107,7 +107,7 @@ namespace DonahuellasSi.vista.Forms
                 return;
             }
 
-            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+            DataGridViewRow row = tablaDonantes.Rows[e.RowIndex];
             int id;
             string nombre ="";
 
