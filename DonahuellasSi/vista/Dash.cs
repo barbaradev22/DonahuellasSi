@@ -83,5 +83,20 @@ namespace DonahuellasSi.vista
             FormProyectos ventana = new FormProyectos();
             ventana.ShowDialog();
         }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            if (rBtnAportes.Checked)
+            {
+                cargarAportes();
+            } else if (rBtnProyectos.Checked)
+            {
+                cargarProyectos();
+            }
+            else
+            {
+                cargarDonantes();
+            }
+        }
     }
 }

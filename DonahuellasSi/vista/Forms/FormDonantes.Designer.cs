@@ -103,7 +103,7 @@
             this.tablaDonantes.RowHeadersWidth = 51;
             this.tablaDonantes.Size = new System.Drawing.Size(1665, 479);
             this.tablaDonantes.TabIndex = 0;
-            this.tablaDonantes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaDonantes_CellContentClick);
+            this.tablaDonantes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaDonantes_CellClick);
             // 
             // iddonanteDataGridViewTextBoxColumn
             // 

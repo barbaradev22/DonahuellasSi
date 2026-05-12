@@ -45,6 +45,19 @@ namespace DonahuellasSi.vista.Forms
                 return;
             }
 
+            if (!txtTelefono.MaskCompleted)
+            {
+                MessageBox.Show("El teléfono debe tener el formato +56 0 0000-0000");
+                txtNombre.Focus();
+                return;
+            }
+
+            if (!txtRut.MaskCompleted)
+            {
+                MessageBox.Show("El RUT debe tener el formato 00.000.000-0");
+                txtRut.Focus();
+                return;
+            }
             string nombre = "";
             string rut ="";
             string tel = "";
@@ -96,57 +109,6 @@ namespace DonahuellasSi.vista.Forms
                 return;
             }
             this.donanteTableAdapter.Fill(this.donaHuellasDataSet5.donante);
-
-        }
-
-        private void tablaDonantes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if(e.RowIndex < 0)
-            {
-                MessageBox.Show("Seleccione una fila válida");
-                return;
-            }
-
-            DataGridViewRow row = tablaDonantes.Rows[e.RowIndex];
-            int id;
-            string nombre ="";
-
-            string rut ="";
-
-
-            string telefono ="";
-
-            try
-            {
-                id = Convert.ToInt32(row.Cells[0].Value);
-                idDonante = id;
-            } catch(Exception ex)
-            {
-                MessageBox.Show("Error al obtener el ID del donante: " + ex.Message);
-                return;
-            }
-
-            try
-            {
-                nombre = row.Cells[1].Value.ToString();
-                rut = row.Cells[3].Value.ToString();
-                telefono = row.Cells[2].Value.ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se pudieron obtener los datos seleccionados");
-                return;
-            }
-
-            if(string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(rut) || string.IsNullOrEmpty(telefono))
-            {
-                MessageBox.Show("La fila seleccionada contiene datos vacíos");
-                return;
-            }
-            lblId.Text = $"Id del donante: {id}";
-            txtNombre.Text = nombre;
-            txtRut.Text = rut;
-            txtTelefono.Text = telefono;
 
         }
 
@@ -270,6 +232,58 @@ namespace DonahuellasSi.vista.Forms
         private void buscarId()
         {
             lblId.Text = "Id del donante: " + (daoDonante.listar().Count + 1).ToString();
+        }
+
+        private void tablaDonantes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+            {
+                MessageBox.Show("Seleccione una fila válida");
+                return;
+            }
+
+            DataGridViewRow row = tablaDonantes.Rows[e.RowIndex];
+            int id;
+            string nombre = "";
+
+            string rut = "";
+
+
+            string telefono = "";
+
+            try
+            {
+                id = Convert.ToInt32(row.Cells[0].Value);
+                idDonante = id;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener el ID del donante: " + ex.Message);
+                return;
+            }
+
+            try
+            {
+                nombre = row.Cells[1].Value.ToString();
+                rut = row.Cells[3].Value.ToString();
+                telefono = row.Cells[2].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudieron obtener los datos seleccionados");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(rut) || string.IsNullOrEmpty(telefono))
+            {
+                MessageBox.Show("La fila seleccionada contiene datos vacíos");
+                return;
+            }
+            lblId.Text = $"Id del donante: {id}";
+            txtNombre.Text = nombre;
+            txtRut.Text = rut;
+            txtTelefono.Text = telefono;
+
         }
     }
 }
