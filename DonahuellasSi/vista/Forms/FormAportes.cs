@@ -19,6 +19,7 @@ namespace DonahuellasSi.vista.Forms
         private DAOAporte daoA = new DAOAporte();
         private DAODonante daoD = new DAODonante();
         private DAOProyecto daoP = new DAOProyecto();
+        private int idAporte = -1;
 
         public FormAportes()
         {
@@ -28,10 +29,11 @@ namespace DonahuellasSi.vista.Forms
 
         private void cargarAportes()
         {
-            DAOAporteDetalle daoAD = new DAOAporteDetalle();
             List<AporteDetalle> lista = daoAD.listarTodo();
             BindingList<AporteDetalle> bindingList = new BindingList<AporteDetalle>(lista);
+            tablaPrincipal.AutoGenerateColumns = true;
             tablaPrincipal.DataSource = bindingList;
+            actualizarLabel();
         }
 
         private void customProperties()
@@ -44,22 +46,17 @@ namespace DonahuellasSi.vista.Forms
         private void cargarComboDonantes()
         {
             List<Donante> lista = daoD.listar();
+            cbDonantes.DisplayMember = "NombreRut";
+            cbDonantes.ValueMember = "IdDonante";
             cbDonantes.DataSource = lista;
         }
 
         private void cargarComboProyectos()
         {
             List<Proyecto> lista = daoP.listar();
+            cbProyectos.DisplayMember = "NombreProyecto";
+            cbProyectos.ValueMember = "IdProyecto";
             cbProyectos.DataSource = lista;
-        }
-
-
-        private void timerCheck_Tick(object sender, EventArgs e)
-        {
-            if (cbDonantes.SelectedIndex == -1 && cbProyectos.SelectedIndex == -1)
-            {
-                lblId.Text = "Id del aporte: " + daoAD.listarTodo().Count.ToString() + 1;
-            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -67,38 +64,115 @@ namespace DonahuellasSi.vista.Forms
             if (cbDonantes.SelectedIndex == -1 || cbProyectos.SelectedIndex == -1 || spnMonto.Value <= 0)
             {
                 MessageBox.Show("Antes de agregar un aporte debe seleccionar:\n*Donante\n*Proyecto\nY un aporte no puede ser menor o igual a 0.");
-            }
-
-
-            Proyecto p = null;
-            Donante d = null;
-
-            try
-            {
-                p = (Proyecto)cbProyectos.SelectedItem;
-                d = (Donante)cbDonantes.SelectedItem;
-            }
-            catch (Exception ex)
-            { 
-            MessageBox.Show("Error al obtener el proyecto o donante seleccionado: " + ex.Message);
-            return;
-            }
-
-            if(p == null || d == null)
-            {
-                MessageBox.Show("");
                 return;
             }
 
-            int monto = 0;
-            int idP = 0;
-            int idD = 0;
+            Proyecto p = (Proyecto)cbProyectos.SelectedItem;
+            Donante d = (Donante)cbDonantes.SelectedItem;
 
-            List<Proyecto> listP = daoP.listar();
-            List<Donante> listD = daoD.listar();
+            Aporte a = new Aporte();
+            a.IdProyecto = p.IdProyecto;
+            a.IdDonante = d.IdDonante;
+            a.CantidadDonada = (int)spnMonto.Value;
 
+            try
+            {
+                bool confirmacion = daoA.insertar(a);
+                if (confirmacion)
+                    MessageBox.Show("Aporte ingresado correctamente.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al insertar el aporte: " + ex.Message);
+                return;
+            }
 
+            cargarAportes();
+        }
+        private void actualizarLabel()
+        {
+            if (idAporte == -1)
+                lblId.Text = "Id del aporte: " + (daoAD.listarTodo().Count + 1);
+            else
+                lblId.Text = "Id del aporte: " + idAporte;
+        }
 
+        private void tablaPrincipal_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) { return; }
+
+            DataGridViewRow fila = tablaPrincipal.Rows[e.RowIndex];
+
+            try
+            {
+                idAporte = Convert.ToInt32(fila.Cells[0].Value);
+                int idProyecto = Convert.ToInt32(fila.Cells[1].Value);
+                int idDonante = Convert.ToInt32(fila.Cells[2].Value);
+                int cantidad = Convert.ToInt32(fila.Cells[3].Value);
+                cbProyectos.SelectedValue = idProyecto;
+                cbDonantes.SelectedValue = idDonante;
+                spnMonto.Value = cantidad;
+                actualizarLabel();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el aporte seleccionado: " + ex.Message);
+            }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            if (idAporte == -1) { MessageBox.Show("Seleccione un aporte de la tabla primero."); return; }
+
+            Aporte a = new Aporte();
+            a.Id = idAporte;
+            a.IdProyecto = ((Proyecto)cbProyectos.SelectedItem).IdProyecto;
+            a.IdDonante = ((Donante)cbDonantes.SelectedItem).IdDonante;
+            a.CantidadDonada = (int)spnMonto.Value;
+
+            try
+            {
+                bool confirmacion = daoA.actualizar(a);
+                if (confirmacion)
+                {
+                    MessageBox.Show("Aporte actualizado correctamente.");
+                    idAporte = -1;
+                    cargarAportes();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar el aporte: " + ex.Message);
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (idAporte == -1) { MessageBox.Show("Seleccione un aporte de la tabla primero."); return; }
+
+            DialogResult resultado = MessageBox.Show(
+                "¿Está seguro que desea eliminar el aporte seleccionado?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (resultado == DialogResult.Yes)
+            {
+                try
+                {
+                    bool confirmacion = daoA.eliminar(idAporte);
+                    if (confirmacion)
+                    {
+                        MessageBox.Show("Aporte eliminado correctamente.");
+                        idAporte = -1;
+                        cargarAportes();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar el aporte: " + ex.Message);
+                }
+            }
         }
     }
 }

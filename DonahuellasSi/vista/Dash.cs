@@ -22,24 +22,25 @@ namespace DonahuellasSi.vista
 
         private void Dash_Load(object sender, EventArgs e)
         {
-            this.proyectoTableAdapter.Fill(this.donaHuellasDataSet2.proyecto);
+            cargarProyectos();
         }
 
         private void cargarProyectos()
         {
-            // TODO: esta línea de código carga datos en la tabla 'donaHuellasDataSet2.proyecto' Puede moverla o quitarla según sea necesario.
-            // Pintar lista con proyectos.
-            this.proyectoTableAdapter.Fill(this.donaHuellasDataSet2.proyecto);
-
+            DAOProyecto daoP = new DAOProyecto();
+            List<Proyecto> lista = daoP.listar();
+            BindingList<Proyecto> bindingList = new BindingList<Proyecto>(lista);
+            tablaPrincipal.AutoGenerateColumns = true;
+            tablaPrincipal.DataSource = bindingList;
         }
 
         private void cargarDonantes()
         {
-            // TODO: esta línea de código carga datos en la tabla 'donaHuellasDataSet1.donante' Puede moverla o quitarla según sea necesario.
-            // Pintar lista con donantes.
-            this.donanteTableAdapter.Fill(this.donaHuellasDataSet1.donante);
-
-
+            DAODonante daoD = new DAODonante();
+            List<Donante> lista = daoD.listar();
+            BindingList<Donante> bindingList = new BindingList<Donante>(lista);
+            tablaPrincipal.AutoGenerateColumns = true;
+            tablaPrincipal.DataSource = bindingList;
         }
 
         private void cargarAportes()
@@ -47,6 +48,7 @@ namespace DonahuellasSi.vista
             DAOAporteDetalle daoAD = new DAOAporteDetalle();
             List<AporteDetalle> lista = daoAD.listarTodo();
             BindingList<AporteDetalle> bindingList = new BindingList<AporteDetalle>(lista);
+            tablaPrincipal.AutoGenerateColumns = true;
             tablaPrincipal.DataSource = bindingList;
         }
 
