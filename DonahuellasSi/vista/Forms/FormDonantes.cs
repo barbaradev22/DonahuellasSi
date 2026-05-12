@@ -34,7 +34,7 @@ namespace DonahuellasSi.vista.Forms
 
         private void customProperties()
         {
-            lblId.Text = "Id del donante: " + daoDonante.listar().Count.ToString();
+            buscarId();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -95,6 +95,7 @@ namespace DonahuellasSi.vista.Forms
                 MessageBox.Show("No se pudo agregar el donante");
                 return;
             }
+            buscarId();
             this.donanteTableAdapter.Fill(this.donaHuellasDataSet5.donante);
 
         }
@@ -129,8 +130,8 @@ namespace DonahuellasSi.vista.Forms
             try
             {
                 nombre = row.Cells[1].Value.ToString();
-                rut = row.Cells[2].Value.ToString();
-                telefono = row.Cells[3].Value.ToString();
+                rut = row.Cells[3].Value.ToString();
+                telefono = row.Cells[2].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -155,7 +156,7 @@ namespace DonahuellasSi.vista.Forms
         {
             if(string.IsNullOrEmpty(txtNombre.Text) && string.IsNullOrEmpty(txtRut.Text) && string.IsNullOrEmpty(txtTelefono.Text))
             {
-                lblId.Text = "Id del donante: " + daoDonante.listar().Count.ToString();
+                buscarId();
             }
         }
 
@@ -163,7 +164,7 @@ namespace DonahuellasSi.vista.Forms
         {
             if (string.IsNullOrEmpty(txtNombre.Text) && string.IsNullOrEmpty(txtRut.Text) && string.IsNullOrEmpty(txtTelefono.Text))
             {
-                lblId.Text = "Id del donante: " + daoDonante.listar().Count.ToString();
+                buscarId();
             }
         }
 
@@ -171,7 +172,7 @@ namespace DonahuellasSi.vista.Forms
         {
             if (string.IsNullOrEmpty(txtNombre.Text) && string.IsNullOrEmpty(txtRut.Text) && string.IsNullOrEmpty(txtTelefono.Text))
             {
-                lblId.Text = "Id del donante: " + daoDonante.listar().Count.ToString();
+                buscarId();
             }
         }
         // </Metodos para actualizar el label del id del donante al limpiar los campos
@@ -214,6 +215,7 @@ namespace DonahuellasSi.vista.Forms
             {
                 MessageBox.Show("Error al actualizar: " + ex.Message);
             }
+            buscarId();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -254,6 +256,7 @@ namespace DonahuellasSi.vista.Forms
                 {
                     MessageBox.Show("Error al eliminar: " + ex.Message);
                 }
+                buscarId();
             }
         }
 
@@ -262,6 +265,14 @@ namespace DonahuellasSi.vista.Forms
             this.Close();
         }
 
-      
+        private void buscarId()
+        {
+            List<Donante> listD = daoDonante.listar();
+
+            foreach(Donante d in listD)
+            {
+                lblId.Text = $"Id del donante: {idDonante}";
+            }
+        }
     }
 }
