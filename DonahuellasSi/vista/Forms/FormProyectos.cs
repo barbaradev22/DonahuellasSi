@@ -31,7 +31,7 @@ namespace DonahuellasSi.vista.Forms
 
         private void customProperties()
         {
-            lblId.Text = "Id del proyecto: " + DAOProyecto.listar().Count.ToString();
+            lblId.Text = "Id del proyecto: " + (DAOProyecto.listar().Count + 1).ToString();
 
         }
 
@@ -44,8 +44,12 @@ namespace DonahuellasSi.vista.Forms
             string nombre = row.Cells[1].Value?.ToString() ?? "";
             string descripcion = row.Cells[2].Value?.ToString() ?? "";
 
-            if (string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(descripcion) || row.Cells[3].Value == null)
+            if (row.Cells[0].Value == null || string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(descripcion) || row.Cells[3].Value == null)
+            {
+                MessageBox.Show("Seleccionaste una fila vacía, intenta con otra.");
                 return;
+            }
+                
 
             int costo = Convert.ToInt32(row.Cells[3].Value);
 

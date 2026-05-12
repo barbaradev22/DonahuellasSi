@@ -101,6 +101,7 @@
             this.tablaProyectos.Location = new System.Drawing.Point(0, 0);
             this.tablaProyectos.Margin = new System.Windows.Forms.Padding(4);
             this.tablaProyectos.Name = "tablaProyectos";
+            this.tablaProyectos.ReadOnly = true;
             this.tablaProyectos.RowHeadersWidth = 51;
             this.tablaProyectos.Size = new System.Drawing.Size(1665, 479);
             this.tablaProyectos.TabIndex = 0;
@@ -120,6 +121,7 @@
             this.nombreproyectoDataGridViewTextBoxColumn.HeaderText = "nombre_proyecto";
             this.nombreproyectoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.nombreproyectoDataGridViewTextBoxColumn.Name = "nombreproyectoDataGridViewTextBoxColumn";
+            this.nombreproyectoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // descripcionproyectoDataGridViewTextBoxColumn
             // 
@@ -127,6 +129,7 @@
             this.descripcionproyectoDataGridViewTextBoxColumn.HeaderText = "descripcion_proyecto";
             this.descripcionproyectoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.descripcionproyectoDataGridViewTextBoxColumn.Name = "descripcionproyectoDataGridViewTextBoxColumn";
+            this.descripcionproyectoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // montodonadoDataGridViewTextBoxColumn
             // 
@@ -134,6 +137,7 @@
             this.montodonadoDataGridViewTextBoxColumn.HeaderText = "monto_donado";
             this.montodonadoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.montodonadoDataGridViewTextBoxColumn.Name = "montodonadoDataGridViewTextBoxColumn";
+            this.montodonadoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // proyectoBindingSource
             // 

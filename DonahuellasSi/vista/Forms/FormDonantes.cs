@@ -34,7 +34,7 @@ namespace DonahuellasSi.vista.Forms
 
         private void customProperties()
         {
-            buscarId();
+            lblId.Text = "Id del donante: " + (daoDonante.listar().Count + 1).ToString();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -95,7 +95,6 @@ namespace DonahuellasSi.vista.Forms
                 MessageBox.Show("No se pudo agregar el donante");
                 return;
             }
-            buscarId();
             this.donanteTableAdapter.Fill(this.donaHuellasDataSet5.donante);
 
         }
@@ -144,7 +143,7 @@ namespace DonahuellasSi.vista.Forms
                 MessageBox.Show("La fila seleccionada contiene datos vacíos");
                 return;
             }
-            lblId.Text += $" {idDonante}";
+            lblId.Text = $"Id del donante: {id}";
             txtNombre.Text = nombre;
             txtRut.Text = rut;
             txtTelefono.Text = telefono;
@@ -157,6 +156,7 @@ namespace DonahuellasSi.vista.Forms
             if(string.IsNullOrEmpty(txtNombre.Text) && string.IsNullOrEmpty(txtRut.Text) && string.IsNullOrEmpty(txtTelefono.Text))
             {
                 buscarId();
+
             }
         }
 
@@ -165,6 +165,7 @@ namespace DonahuellasSi.vista.Forms
             if (string.IsNullOrEmpty(txtNombre.Text) && string.IsNullOrEmpty(txtRut.Text) && string.IsNullOrEmpty(txtTelefono.Text))
             {
                 buscarId();
+
             }
         }
 
@@ -173,6 +174,7 @@ namespace DonahuellasSi.vista.Forms
             if (string.IsNullOrEmpty(txtNombre.Text) && string.IsNullOrEmpty(txtRut.Text) && string.IsNullOrEmpty(txtTelefono.Text))
             {
                 buscarId();
+
             }
         }
         // </Metodos para actualizar el label del id del donante al limpiar los campos
@@ -267,12 +269,7 @@ namespace DonahuellasSi.vista.Forms
 
         private void buscarId()
         {
-            List<Donante> listD = daoDonante.listar();
-
-            foreach(Donante d in listD)
-            {
-                lblId.Text = $"Id del donante: {idDonante}";
-            }
+            lblId.Text = "Id del donante: " + (daoDonante.listar().Count + 1).ToString();
         }
     }
 }

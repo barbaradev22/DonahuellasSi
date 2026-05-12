@@ -80,6 +80,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>donaHuellasDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="donaHuellasDataSet10.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>donaHuellasDataSet10.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="donaHuellasDataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>donaHuellasDataSet11.xsd</DependentUpon>
+    </Compile>
     <Compile Include="donaHuellasDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -104,6 +114,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>donaHuellasDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="donaHuellasDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>donaHuellasDataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="donaHuellasDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>donaHuellasDataSet8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="donaHuellasDataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>donaHuellasDataSet9.xsd</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -194,6 +219,28 @@
     <None Include="donaHuellasDataSet1.xss">
       <DependentUpon>donaHuellasDataSet1.xsd</DependentUpon>
     </None>
+    <None Include="donaHuellasDataSet10.xsc">
+      <DependentUpon>donaHuellasDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="donaHuellasDataSet10.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>donaHuellasDataSet10.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="donaHuellasDataSet10.xss">
+      <DependentUpon>donaHuellasDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="donaHuellasDataSet11.xsc">
+      <DependentUpon>donaHuellasDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="donaHuellasDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>donaHuellasDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="donaHuellasDataSet11.xss">
+      <DependentUpon>donaHuellasDataSet11.xsd</DependentUpon>
+    </None>
     <None Include="donaHuellasDataSet2.xsc">
       <DependentUpon>donaHuellasDataSet2.xsd</DependentUpon>
     </None>
@@ -249,6 +296,39 @@
     <None Include="donaHuellasDataSet6.xss">
       <DependentUpon>donaHuellasDataSet6.xsd</DependentUpon>
     </None>
+    <None Include="donaHuellasDataSet7.xsc">
+      <DependentUpon>donaHuellasDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="donaHuellasDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>donaHuellasDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="donaHuellasDataSet7.xss">
+      <DependentUpon>donaHuellasDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="donaHuellasDataSet8.xsc">
+      <DependentUpon>donaHuellasDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="donaHuellasDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>donaHuellasDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="donaHuellasDataSet8.xss">
+      <DependentUpon>donaHuellasDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="donaHuellasDataSet9.xsc">
+      <DependentUpon>donaHuellasDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="donaHuellasDataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>donaHuellasDataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="donaHuellasDataSet9.xss">
+      <DependentUpon>donaHuellasDataSet9.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -275,13 +355,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="donaHuellas.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="donaHuellas_log.ldf">
-      <DependentUpon>donaHuellas.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="sqlScripts\tablaAportes.sql" />
     <Content Include="sqlScripts\tablaDonantes.sql" />
     <Content Include="sqlScripts\tablaProyectos.sql" />

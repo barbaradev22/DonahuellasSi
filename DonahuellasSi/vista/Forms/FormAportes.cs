@@ -86,7 +86,7 @@ namespace DonahuellasSi.vista.Forms
                 MessageBox.Show("Error al insertar el aporte: " + ex.Message);
                 return;
             }
-
+          
             cargarAportes();
         }
         private void actualizarLabel()
@@ -95,29 +95,6 @@ namespace DonahuellasSi.vista.Forms
                 lblId.Text = "Id del aporte: " + (daoAD.listarTodo().Count + 1);
             else
                 lblId.Text = "Id del aporte: " + idAporte;
-        }
-
-        private void tablaPrincipal_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0) { return; }
-
-            DataGridViewRow fila = tablaPrincipal.Rows[e.RowIndex];
-
-            try
-            {
-                idAporte = Convert.ToInt32(fila.Cells[0].Value);
-                int idProyecto = Convert.ToInt32(fila.Cells[1].Value);
-                int idDonante = Convert.ToInt32(fila.Cells[2].Value);
-                int cantidad = Convert.ToInt32(fila.Cells[3].Value);
-                cbProyectos.SelectedValue = idProyecto;
-                cbDonantes.SelectedValue = idDonante;
-                spnMonto.Value = cantidad;
-                actualizarLabel();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar el aporte seleccionado: " + ex.Message);
-            }
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -173,6 +150,62 @@ namespace DonahuellasSi.vista.Forms
                     MessageBox.Show("Error al eliminar el aporte: " + ex.Message);
                 }
             }
+        }
+
+        private void FormAportes_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'donaHuellasDataSet11.proyecto' Puede moverla o quitarla según sea necesario.
+            this.proyectoTableAdapter.Fill(this.donaHuellasDataSet11.proyecto);
+            // TODO: esta línea de código carga datos en la tabla 'donaHuellasDataSet10.donante' Puede moverla o quitarla según sea necesario.
+            this.donanteTableAdapter1.Fill(this.donaHuellasDataSet10.donante);
+            // TODO: esta línea de código carga datos en la tabla 'donaHuellasDataSet9.donante' Puede moverla o quitarla según sea necesario.
+            this.donanteTableAdapter.Fill(this.donaHuellasDataSet9.donante);
+
+        }
+
+        private void tablaPrincipal_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) { return; }
+
+            DataGridViewRow fila = tablaPrincipal.Rows[e.RowIndex];
+
+            if (fila.Cells[0].Value == null || fila.Cells[1].Value == null ||fila.Cells[2].Value == null || fila.Cells[3].Value == null)
+            {
+                MessageBox.Show("Seleccionaste una fila vacía, intenta con otra.");
+                return;
+            }
+            // no nada
+            int id = Convert.ToInt32(fila.Cells[0].Value);
+
+
+            idAporte = id;
+            string proyecto = fila.Cells[1].Value.ToString() ;
+            string donante = fila.Cells[2].Value.ToString() ;
+            int monto = Convert.ToInt32(fila.Cells[3].Value);
+
+            lblId.Text = "Id del aporte: " + id;
+            cbProyectos.SelectedIndex = cbProyectos.FindStringExact(proyecto);
+            cbDonantes.SelectedIndex = cbDonantes.FindString(donante);
+            spnMonto.Value = monto;
+            
+
+
+
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {   
+            this.Close();
+
+        }
+
+        private void resetearFormulario()
+        {
+            cbDonantes.SelectedIndex = 0;
+            cbProyectos.SelectedIndex = 0;
+            spnMonto.Value = 0;
+            idAporte = -1;
+            actualizarLabel();
         }
     }
 }
