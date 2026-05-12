@@ -102,6 +102,7 @@ namespace DonahuellasSi.vista.Forms
             {
                 MessageBox.Show("Error al agregar el proyecto: " + ex.Message);
             }
+            
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -173,7 +174,7 @@ namespace DonahuellasSi.vista.Forms
 
 
             DialogResult confirmacion = MessageBox.Show(
-            $"¿Está seguro que desea eliminar al donante?",
+            $"¿Está seguro que desea eliminar el proyecto {txtNombreProyecto.Text}?",
             "Confirmar eliminación",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Warning
@@ -208,6 +209,15 @@ namespace DonahuellasSi.vista.Forms
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNombreProyecto.Text) && string.IsNullOrWhiteSpace(txtDescripcion.Text) && numericCosto.Value == 10000)
+            {
+                lblId.Text = "Id del proyecto: " + DAOProyecto.listar().Count + 1;
+            }
+    
         }
     }
 

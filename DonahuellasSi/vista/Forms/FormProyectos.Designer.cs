@@ -53,6 +53,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.proyectoTableAdapter = new DonahuellasSi.donaHuellasDataSet3TableAdapters.proyectoTableAdapter();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProyectos)).BeginInit();
@@ -328,6 +329,10 @@
             // 
             this.proyectoTableAdapter.ClearBeforeFill = true;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FormProyectos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -378,5 +383,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Timer timer1;
     }
 }
