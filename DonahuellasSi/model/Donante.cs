@@ -47,9 +47,6 @@ namespace DonahuellasSi.model
             this.rutDonante = rutDonante;
         }
 
-        public string toString()
-        {
-            return $"{idDonante}: {nombreDonante} - {rutDonante}";
-        }
+        public string NombreRut => $"{NombreDonante} - {RutDonante}";
     }
 }
