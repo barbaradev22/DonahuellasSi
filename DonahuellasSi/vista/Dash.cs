@@ -76,9 +76,8 @@ namespace DonahuellasSi.vista
         private void aportesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormAportes ventana = new FormAportes();
-            ventana.ShowDialog();
+                ventana.ShowDialog();
         }
-
         private void proyectosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormProyectos ventana = new FormProyectos();

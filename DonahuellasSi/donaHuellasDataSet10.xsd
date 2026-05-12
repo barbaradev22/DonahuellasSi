@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="donaHuellasDataSet10" targetNamespace="http://tempuri.org/donaHuellasDataSet10.xsd" xmlns:mstns="http://tempuri.org/donaHuellasDataSet10.xsd" xmlns="http://tempuri.org/donaHuellasDataSet10.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="donaHuellasConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="donaHuellasConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DonahuellasSi.Properties.Settings.GlobalReference.Default.donaHuellasConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="donanteTableAdapter" GeneratorDataComponentClassName="donanteTableAdapter" Name="donante" UserDataComponentName="donanteTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="donaHuellasConnectionString (Settings)" DbObjectName="dbo.donante" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT nombre_donante, rut_donante FROM dbo.donante</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="nombre_donante" DataSetColumn="nombre_donante" />
+              <Mapping SourceColumn="rut_donante" DataSetColumn="rut_donante" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="donaHuellasDataSet10" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="donaHuellasDataSet10" msprop:Generator_DataSetName="donaHuellasDataSet10">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="donante" msprop:Generator_RowEvHandlerName="donanteRowChangeEventHandler" msprop:Generator_RowDeletedName="donanteRowDeleted" msprop:Generator_RowDeletingName="donanteRowDeleting" msprop:Generator_RowEvArgName="donanteRowChangeEvent" msprop:Generator_TablePropName="donante" msprop:Generator_RowChangedName="donanteRowChanged" msprop:Generator_RowChangingName="donanteRowChanging" msprop:Generator_TableClassName="donanteDataTable" msprop:Generator_RowClassName="donanteRow" msprop:Generator_TableVarName="tabledonante" msprop:Generator_UserTableName="donante">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nombre_donante" msprop:Generator_ColumnPropNameInRow="nombre_donante" msprop:Generator_ColumnPropNameInTable="nombre_donanteColumn" msprop:Generator_ColumnVarNameInTable="columnnombre_donante" msprop:Generator_UserColumnName="nombre_donante">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rut_donante" msprop:Generator_ColumnPropNameInRow="rut_donante" msprop:Generator_ColumnPropNameInTable="rut_donanteColumn" msprop:Generator_ColumnVarNameInTable="columnrut_donante" msprop:Generator_UserColumnName="rut_donante">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
